@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cd ./mpm-server_lib
+
+make build >&2
+
+if [ $? -ne 0 ]
+then
+  echo "unable to build"
+  cd ..
+else
+cd ..
+
+cp  ./mpm-server_lib/lib/mpm-server.so.*.* ./CppNode/libs/shared
+
+cd ./CppNode&&make build>&2&&cd ..
+
+if [ $? -ne 0 ]
+then
+  echo "Unabel to build CppNode"
+else
+
+  ./run 3000 $(pwd)
+fi
+fi

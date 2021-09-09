@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+temp="dsd"
+
+file="./main"
+
+if [[ "$temp" == "$file" ]];then
+	echo "equal"
+else
+	echo "not equal"
+fi

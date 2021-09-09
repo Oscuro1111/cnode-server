@@ -1,0 +1,69 @@
+#!/bin/bash
+
+var=$(grep  -rnI $1 ./mpm-server_lib/src/|awk -F":" '{print ""$1":"$2""}')
+
+files=""
+lines=""
+temp=""
+count=0;
+len=0;
+num=0
+prev_file=""
+current_file=""
+
+for ii in $(echo $var)
+do
+	((len=len+1))
+done
+
+((len=len-1))
+
+
+function check_dup(){
+
+	if [[ "$prev_file" == "$1" ]];then
+		return	
+	else
+		prev_file=$1
+		((num=num+1))
+	fi
+}
+
+#vim filea fileb filec -c ':10|:bu 2|:100|:bu 3|:200|:rewind'
+for i in $(echo $var)
+do
+	temp=$(echo $i|awk -F":" '{print ""$1""}')
+
+	current_file=$temp
+
+	if [[ "$prev_file" == "$temp" ]];then
+          echo "" 		
+	else
+		files="$files $temp"
+	fi
+
+	temp=$(echo $i|awk -F":" '{print ""$2""}')
+
+
+	if [[ -z $lines ]];then
+		lines=":$num|:$temp|:bu"
+		prev_file=$current_file
+	else
+		if [[ $count -eq $len ]];then
+
+			check_dup $current_file
+			lines="$lines $num|:$temp|:rewind"
+		else
+
+			check_dup $current_file
+			lines="$lines $num|:$temp|:bu"
+
+		fi
+	fi
+
+	((count=count+1)) 
+done
+
+#echo $files $lines
+
+vim $files -c "$lines"

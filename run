@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd CppNode
+
+
+#port ,public directory conatined direactory
+
+./server.sh $1 $2
+cd ..

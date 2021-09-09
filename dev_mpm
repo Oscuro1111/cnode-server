@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true
+do
+   sleep 0.1
+   find ./mpm-server_lib/src/ |entr -cp ./build
+done
+

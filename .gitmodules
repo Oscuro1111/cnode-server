@@ -1,0 +1,6 @@
+[submodule "cpp-node"]
+	path = cpp-node
+	url = https://github.com/Oscuro1111/cpp-node.git
+[submodule "mpm_lib"]
+	path = mpm_lib
+	url = https://github.com/Oscuro1111/mpm_lib.git

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ./mpm-server_lib
+cd ./mpm_lib
 
 make build >&2
 
@@ -11,9 +11,9 @@ then
 else
 cd ..
 
-cp  ./mpm-server_lib/lib/mpm-server.so.*.* ./CppNode/libs/shared
+cp  ./mpm_lib/lib/mpm-server.so.*.* ./CppNode/libs/shared
 
-cd ./CppNode&&make build>&2&&cd ..
+cd ./cpp-node&&make build>&2&&cd ..
 
 if [ $? -ne 0 ]
 then

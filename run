@@ -1,7 +1,6 @@
 #!/bin/bash
 
-cd CppNode
-
+cd cpp-node
 
 #port ,public directory conatined direactory
 

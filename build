@@ -1,5 +1,20 @@
 #!/bin/bash
 
+if [ -d "$(pwd)/public" ]
+then
+	echo "public dir checked"
+else
+	ln -s ./cpp-node/public $(pwd)/public
+fi
+
+if [ -d "$(pwd)/temp" ]
+then
+	echo "temp dir checked"
+else
+	echo "creating temp directory"
+	mkdir $(pwd)/temp
+fi
+
 cd ./mpm_lib
 
 make build >&2

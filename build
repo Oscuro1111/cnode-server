@@ -26,7 +26,7 @@ then
 else
 cd ..
 
-cp  ./mpm_lib/lib/mpm-server.so.*.* ./CppNode/libs/shared
+cp  ./mpm_lib/lib/mpm-server.so.*.* ./cpp-node/libs/shared
 
 cd ./cpp-node&&make build>&2&&cd ..
 
@@ -35,6 +35,6 @@ then
   echo "Unabel to build CppNode"
 else
 
-  ./run 3000 $(pwd)
+  ./run $1 $(pwd)
 fi
 fi
